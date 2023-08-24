@@ -1,0 +1,138 @@
+{
+    "games": {
+        "2021_09_01_1": {
+            "date": "09/01",
+            "time": "9:30 a.m.",
+            "teams": "U1 and U4",
+            "location": "Katzenmaier"
+        },
+        "2021_09_01_2": {
+            "date": "09/01",
+            "time": "1:00 p.m.",
+            "teams": "U3 and U2",
+            "location": "Greenbay"
+        },
+        "2021_09_08_1": {
+            "date": "09/08",
+            "time": "9:30 a.m.",
+            "teams": "U5 and U6",
+            "location": "Howard"
+        },
+        "2021_09_08_2": {
+            "date": "09/08",
+            "time": "1:00 p.m.",
+            "teams": "U6 and U1",
+            "location": "Marjorie"
+        },
+        "2021_09_15_1": {
+            "date": "09/15",
+            "time": "9:30 a.m.",
+            "teams": "U2 and U4",
+            "location": "North"
+        },
+        "2021_09_15_2": {
+            "date": "09/15",
+            "time": "1:00 p.m.",
+            "teams": "U3 and U5",
+            "location": "Katzenmaier"
+        },
+        "2021_09_22_1": {
+            "date": "09/22",
+            "time": "9:30 a.m.",
+            "teams": "U1 and U3",
+            "location": "South"
+        },
+        "2021_09_22_2": {
+            "date": "09/22",
+            "time": "1:00 p.m.",
+            "teams": "U2 and U6",
+            "location": "Howard"
+        },
+        "2021_09_29_1": {
+            "date": "09/29",
+            "time": "9:30 a.m.",
+            "teams": "U4 and U5",
+            "location": "Greenbay"
+        },
+        "2021_10_06_1": {
+            "date": "10/06",
+            "time": "9:30 a.m.",
+            "teams": "U2 and U5",
+            "location": "Marjorie"
+        },
+        "2021_10_06_2": {
+            "date": "10/06",
+            "time": "1:00 p.m.",
+            "teams": "U1 and U6",
+            "location": "South"
+        },
+        "2021_10_13_1": {
+            "date": "10/13",
+            "time": "9:30 a.m.",
+            "teams": "U3 and U4",
+            "location": "Howard"
+        },
+        "2021_10_13_2": {
+            "date": "10/13",
+            "time": "1:00 p.m.",
+            "teams": "U5 and U1",
+            "location": "Greenbay"
+        },
+        "2021_10_20_1": {
+            "date": "10/20",
+            "time": "9:30 a.m.",
+            "teams": "U6 and U3",
+            "location": "North"
+        },
+        "2021_10_20_2": {
+            "date": "10/20",
+            "time": "1:00 p.m.",
+            "teams": "U2 and U4",
+            "location": "Marjorie"
+        },
+        "2021_10_27_1": {
+            "date": "10/27",
+            "time": "9:30 a.m.",
+            "teams": "U3 and U1",
+            "location": "Katzenmaier"
+        },
+        "2021_10_27_2": {
+            "date": "10/27",
+            "time": "1:00 p.m.",
+            "teams": "U5 and U6",
+            "location": "Howard"
+        }
+    },
+    "locations": {
+        "Katzenmaier": {
+            "name": "AJ Katzenmaier",
+            "address": "24 W. Walton St., Chicago, IL 60610",
+            "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.654060426228!2d-87.63123908426185!3d41.90029637200331!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd34e07f6bac3%3A0x68a82e5d59952c86!2s24%20W%20Walton%20St%2C%20Chicago%2C%20IL%2060610%2C%20USA!5e0!3m2!1sen!2snl!4v1649253383480!5m2!1sen!2snl"
+        },
+        "Greenbay": {
+            "name": "Greenbay",
+            "address": "1734 N. Orleans St., Chicago, IL 60614",
+            "url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.0256986746094!2d-87.64002798426155!3d41.91380627115738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd34073f306a3%3A0x9e1726bbf8f23f0e!2s1734%20N%20Orleans%20St%2C%20Chicago%2C%20IL%2060614%2C%20USA!5e0!3m2!1sen!2snl!4v1649254489197!5m2!1sen!2snl"
+        },
+        "Howard": {
+            "name": "Howard A Yeager",
+            "address": "2245 N. Southport Ave., Chicago, IL 60614",
+            "url": "https://goo.gl/maps/cP1zFPmQqLDbLkRF7"
+        },
+        "Marjorie": {
+            "name": "Marjorie P Hart",
+            "address": "2625 N. Orchard St., Chicago, IL 60614",
+            "url": "https://goo.gl/maps/BzPWrirmsz7nifKd9"
+        },
+        "North": {
+            "name": "North",
+            "address": "1409 N. Ogden Ave., Chicago, IL 60610",
+            "url": "https://goo.gl/maps/VF2gGsBrWVrr89EGA"
+        },
+        "South": {
+            "name": "South",
+            "address": "2101 N. Fremont St., Chicago, IL 60614",
+            "url": "https://goo.gl/maps/EHM3hTuz8hHXSyFm9"
+        }
+    }
+  }
