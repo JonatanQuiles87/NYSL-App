@@ -1,24 +1,27 @@
 import React from 'react';
-//import { useNavigate } from "react-router-dom";
-import {tableData} from "../data/tableData";
-import TableRow from "./TableRow";
 
-const TableBody = ({month}) => {
-    const gamesOfMonth = tableData.games.filter(game => game.date.match(month));
-    console.log("gamesOfMonth", gamesOfMonth);
-
+const TableBody = ({children}) => {
     return (
         <tbody>
-        {
-            gamesOfMonth
-                .map(game => {
-                    return (
-                        <TableRow key={game.id} game={game}/>
-                    )
-                })
-        }
+            {children}
         </tbody>
-    );
-};
+    )
+}
+
+// Below is the old code. The code has been updated to be able to keep the logic in one file which is Schedule.js and the rest of the components will only take care of the UI part.
+// const TableBody = ({games}) => {
+//     return (
+//         <tbody>
+//         {
+//             games
+//                 .map(game => {
+//                     return (
+//                         <TableRow key={game.id} game={game}/>
+//                     )
+//                 })
+//         }
+//         </tbody>
+//     );
+// };
 
 export default TableBody;

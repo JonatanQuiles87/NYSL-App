@@ -1,17 +1,9 @@
 import React from 'react';
-import {months} from "../data/months";
 
-const TableHeader = ({month}) => {
+export const TableHeader = ({children}) => {
     return (
         <thead>
-        <tr>
-            <th scope="col">{months[month]}</th>
-            <th scope="col">Teams</th>
-            <th scope="col">Location</th>
-            <th scope="col">Times</th>
-        </tr>
+            {children}
         </thead>
     );
 };
-
-export default TableHeader;

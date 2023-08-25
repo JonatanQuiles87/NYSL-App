@@ -1,123 +1,123 @@
 export const tableData = {
-    games:  [
+    games: [
         {
             id: "2021_09_01_1",
             date: "09/01",
             teams: "U1 and U4",
             location: "Katzenmaier",
-            times: "9:30 a.m."
+            time: "9:30 a.m."
         },
         {
             id: "2021_09_01_2",
             date: "09/01",
             teams: "U3 and U2",
             location: "Greenbay",
-            times: "1:00 p.m."
+            time: "1:00 p.m."
         },
         {
             id: "2021_09_08_1",
             date: "09/08",
             teams: "U5 and U6",
             location: "Howard",
-            times: "9:30 a.m."
+            time: "9:30 a.m."
         },
         {
             id: "2021_09_08_2",
             date: "09/08",
             teams: "U6 and U1",
             location: "Marjorie",
-            times: "1:00 p.m."
+            time: "1:00 p.m."
         },
         {
             id: "2021_09_15_1",
             date: "09/15",
             teams: "U2 and U4",
             location: "North",
-            times: "9:30 a.m."
+            time: "9:30 a.m."
         },
         {
             id: "2021_09_15_2",
             date: "09/15",
             teams: "U3 and U5",
             location: "Katzenmaier",
-            times: "1:00 p.m."
+            time: "1:00 p.m."
         },
         {
             id: "2021_09_22_1",
             date: "09/22",
             teams: "U1 and U3",
             location: "South",
-            times: "9:30 a.m."
+            time: "9:30 a.m."
         },
         {
             id: "2021_09_22_2",
             date: "09/22",
             teams: "U2 and U6",
             location: "Howard",
-            times: "1:00 p.m."
+            time: "1:00 p.m."
         },
         {
             id: "2021_09_29_1",
             date: "09/29",
             teams: "U4 and U5",
             location: "Greenbay",
-            times: "9:30 a.m."
+            time: "9:30 a.m."
         },
         {
             id: "2021_10_06_1",
             date: "10/06",
             teams: "U2 and U5",
             location: "Marjorie",
-            times: "9:30 a.m."
+            time: "9:30 a.m."
         },
         {
             id: "2021_10_06_2",
             date: "10/06",
             teams: "U1 and U6",
             location: "South",
-            times: "1:00 p.m."
+            time: "1:00 p.m."
         },
         {
             id: "2021_10_13_1",
             date: "10/13",
             teams: "U3 and U4",
             location: "Howard",
-            times: "9:30 a.m."
+            time: "9:30 a.m."
         },
         {
             id: "2021_10_13_2",
             date: "10/13",
             teams: "U5 and U1",
             location: "Greenbay",
-            times: "1:00 p.m."
+            time: "1:00 p.m."
         },
         {
             id: "2021_10_20_1",
             date: "10/20",
             teams: "U6 and U3",
             location: "North",
-            times: "9:30 a.m."
+            time: "9:30 a.m."
         },
         {
             id: "2021_10_20_2",
             date: "10/20",
             teams: "U2 and U4",
             location: "Marjorie",
-            times: "1:00 p.m."
+            time: "1:00 p.m."
         },
         {
             id: "2021_10_27_1",
             date: "10/27",
             teams: "U3 and U1",
             location: "Katzenmaier",
-            times: "9:30 a.m."
+            time: "9:30 a.m."
         },
         {
             id: "2021_10_27_2",
             date: "10/27",
             teams: "U5 and U6",
             location: "Howard",
-            times: "1:00 p.m."
+            time: "1:00 p.m."
         }
     ],
     locations: [

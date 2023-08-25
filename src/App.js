@@ -5,9 +5,9 @@ import {Home} from "./components/Home";
 import {OrderPageTemp} from "./components/OrderPageTemp";
 //import {Games} from "./components/Games"; LazyGames do this function now
 
-const LazySchedule = React.lazy(() => import('./components/Schedule')); 
+const LazySchedule = React.lazy(() => import('./containers/Schedule')); 
 //This is lazy load
-const LazyGames = React.lazy(() => import('./components/Games'));
+const LazyGames = React.lazy(() => import('./containers/GamePage'));
 
 function App() {
   return (
@@ -24,8 +24,8 @@ function App() {
                <LazySchedule/>
                </React.Suspense>}/>
                         <Route path='order-summary' element={<OrderPageTemp/>}/>
-                        {/*<Route path='/games/:id' element={<Games/>}/>*/}
-                        <Route path="games/:id" element={
+                        {/*<Route path='/gameDetails/:id' element={<Games/>}/>*/}
+                        <Route path="gameDetails/:id" element={
                           <React.Suspense fallback='Loading...'>
                             <LazyGames/>
                           </React.Suspense>}/>
