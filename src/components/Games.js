@@ -5,7 +5,7 @@ import details from "../details.json";
 const games = details['games'];
 const locations = details['locations'];
 
-export const Games = () => {
+const Games = () => {
     const navigate = useNavigate();
     const id = useParams().id;
     const locationName = locations[games[id]['location']]['name'];
@@ -60,3 +60,5 @@ export const Games = () => {
         </div>
     );
 }
+
+export default Games;

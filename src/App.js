@@ -3,9 +3,11 @@ import {Routes, Route, Outlet, Link} from "react-router-dom";
 import Navbar from "./components/Navbar";  // In this case default export is used, and we do not need to use braces.
 import {Home} from "./components/Home";
 import {OrderPageTemp} from "./components/OrderPageTemp";
-import {Games} from "./components/Games";
+//import {Games} from "./components/Games"; LazyGames do this function now
 
 const LazySchedule = React.lazy(() => import('./components/Schedule')); 
+//This is lazy load
+const LazyGames = React.lazy(() => import('./components/Games'));
 
 function App() {
   return (
@@ -22,7 +24,11 @@ function App() {
                <LazySchedule/>
                </React.Suspense>}/>
                         <Route path='order-summary' element={<OrderPageTemp/>}/>
-                        <Route path='/games/:id' element={<Games/>}/>
+                        {/*<Route path='/games/:id' element={<Games/>}/>*/}
+                        <Route path="games/:id" element={
+                          <React.Suspense fallback='Loading...'>
+                            <LazyGames/>
+                          </React.Suspense>}/>
 
                         <Route path="*" element={<NoMatch/>}/>
               </Route>
