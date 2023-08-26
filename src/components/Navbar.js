@@ -1,7 +1,12 @@
 import {NavLink} from "react-router-dom";
+import SignInButton from "./SignInButton";
+import SignOutButton from "./SignOutButton";
+import {auth} from "../utilities/firebase";
+import {useAuthState} from "react-firebase-hooks/auth";
 
 // This is called named export
 const Navbar = () => {
+    const [user] = useAuthState(auth);
     const navLinkStyles = ({isActive}) => {
         return {
             fontWeight: isActive ? 'bold' : 'normal',
@@ -9,16 +14,17 @@ const Navbar = () => {
         }
     }
 
-    return(
-        <nav className="navbar navbar-expand-lg navbar-light bg-light container-fluid">
+    return (
+        <nav className="navbar navbar-expand-lg navbar-light bg-light container-fluid justify-content-between">
             <ul className="navbar-nav bg-white">
                 <li className="nav-item">
-                    <NavLink style={navLinkStyles} to="/" className="nav-link shadow">Home</NavLink> {/* NavLink is called Active link */}
+                <NavLink style={navLinkStyles} to="/"className="nav-link shadow">Home</NavLink> {/* NavLink is called Active link */}
                 </li>
                 <li>
                     <NavLink style={navLinkStyles} to="/schedule" className="nav-link shadow">Schedule</NavLink>
                 </li>
             </ul>
+            { user ? <SignOutButton displayName = {user.displayName}/> : <SignInButton />}
         </nav>
     )
 }

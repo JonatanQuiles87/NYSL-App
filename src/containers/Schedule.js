@@ -1,5 +1,4 @@
 import {Table} from "../components/Table";
-import '../components/Schedule.css';
 import {tableData} from "../data/tableData";
 import {useLocation, useNavigate} from "react-router-dom";
 import {getHeaderTitles} from "../data/headerTitles";
@@ -40,7 +39,7 @@ const Schedule = () => {
                                     </TableHeader>
                                     <TableBody>
                                         {games(monthNumber).map(game =>
-                                            <TableRow key={game.id} navigateTo={() => navigate(`/gamePage/${game.id}`)}>
+                                            <TableRow key={game.id} navigateTo={() => navigate(`/gamePage/${game.id}`)} cursor='pointer'>
                                                 {tableRowCells(game)}
                                             </TableRow>
                                         )}

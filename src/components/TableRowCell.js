@@ -1,8 +1,8 @@
 import React from 'react';
 
-const TableRowCell = ({children}) => {
+const TableRowCell = ({children, align='left'}) => {
     return (
-        <td>
+        <td align={align}>
             {children}
         </td>
     );

@@ -31,7 +31,7 @@ const GamePage = () => {
         </div>
 
     const gameTableRowCells = gameTableHeaderTitles
-        .map(title => <TableRowCell key={title}>{title === 'Location' ? getLocationOfTheGame['name'] : getGameWithId[title.toLowerCase()]}</TableRowCell>)
+    .map(title => <TableRowCell key={title} align='center'>{title === 'Location' ? getLocationOfTheGame['name'] : getGameWithId[title.toLowerCase()]}</TableRowCell>)
     const locationTableRowCells = locationPropertiesWithoutId
         .map(title => <TableRowCell key={title}>{title === 'url' ? mapOfLocation : getLocationOfTheGame[title]}</TableRowCell>)
 

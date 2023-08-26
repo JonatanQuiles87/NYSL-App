@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TableRow = ({children, navigateTo}) => <tr onClick={() => navigateTo?.()}>{children}</tr>
+const TableRow = ({children, navigateTo, cursor}) => <tr style={{cursor:cursor}} onClick={() => navigateTo?.()}>{children}</tr>
 
 // Below is the old code. The code has been updated to be able to keep the logic in one file which is Schedule.js and the rest of the components will only take care of the UI part.
 // const columnTitles = Object.keys(tableData.games[0])   // In this line we create an array only with the property names like [id, date, times, teams, location]

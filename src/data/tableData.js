@@ -120,6 +120,7 @@ export const tableData = {
             time: "1:00 p.m."
         }
     ],
+        // Leaflet could have been also used for map --> https://leafletjs.com/examples/quick-start/
     locations: [
         {
             id: "Katzenmaier",
