@@ -1,23 +1,34 @@
 import React from 'react';
-import messages from '../data/gameMessages.json'
+import {database} from "../utilities/firebase";
 import Message from "../components/Message";
+import {useList} from "react-firebase-hooks/database";
+import {ref} from "firebase/database"
 import {sortMessagesFromOldToNew} from "../utilities/helpers";
 
 const MessagePage = ({gameId}) => {
-    const gameSpecificMessages = messages["gameMessages"]?.[gameId] || null;
-    const messagesData = gameSpecificMessages ? Object.entries(gameSpecificMessages) : null;  // I was going to use Object.values to be able to get only the data of the messages,
-                                                                                              // but I needed the id's of the messages to be able to pass to the Message component as unique key like "message[0]".
-                                                                                              // And I pass the message data as a prob like "message[1]" in Message component.
-    const numberOfMessages = messagesData ? messagesData.length : 0;
-    const timeSortedMessages = numberOfMessages ? sortMessagesFromOldToNew(messagesData) : null;
+    const dbRef = ref(database, `/gameMessages/${gameId}`);
+    const [snapshots, loading, error] = useList(dbRef);
+    const gameSpecificMessages = snapshots.map(v => {
+        const eachMessageObject = {};
+        eachMessageObject[v.key] = v.val();
+        return eachMessageObject;
+    });
+    const numberOfMessages = gameSpecificMessages.length;
+    const clonedGameSpecificMessages = numberOfMessages ? [...gameSpecificMessages] : null;
+    const timeSortedMessages = numberOfMessages > 1 ? sortMessagesFromOldToNew(clonedGameSpecificMessages)
+        : numberOfMessages === 1 ? clonedGameSpecificMessages
+            : null;
+
     return (
         <>
             <h2>Messages of game {gameId}</h2>
             <div className="list-group">
                 {
-                    timeSortedMessages ?
-                        timeSortedMessages.map(message => <Message key={message[0]} message={message[1]}/>) :
-                        <p>There is no message for this game yet.</p>}
+                     loading ? <p>Messages: Loading...</p>
+                     : error ? <p>Error: {error}</p>
+                     : numberOfMessages ? timeSortedMessages.map(message => <Message key={Object.keys(message)[0]}
+                                                                               message={Object.values(message)[0]}/>)
+                     : <p>There is no message for this game yet.</p>}
             </div>
         </>
     );

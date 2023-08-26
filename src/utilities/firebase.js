@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import {initializeApp} from "firebase/app";
 import {getAuth, GoogleAuthProvider, signInWithPopup, signOut} from 'firebase/auth';
+import {getDatabase} from "firebase/database"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -8,6 +9,7 @@ import {getAuth, GoogleAuthProvider, signInWithPopup, signOut} from 'firebase/au
 const firebaseConfig = {
   apiKey: "AIzaSyB8Zp9CHdSlyX86UdDH0arLTY8INi8eWIA",
   authDomain: "nysl-app-ce0de.firebaseapp.com",
+  databaseURL: "https://nysl-app-ce0de-default-rtdb.europe-west1.firebasedatabase.app/",
   projectId: "nysl-app-ce0de",
   storageBucket: "nysl-app-ce0de.appspot.com",
   messagingSenderId: "321571468319",
@@ -18,6 +20,7 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 const googleProvider = new GoogleAuthProvider();
+export const database = getDatabase(firebaseApp);
 
 const signInWithGoogle = async () => {
     try {

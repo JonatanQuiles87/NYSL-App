@@ -3,6 +3,10 @@ import MessagePage from "./MessagePage";
 import {useAuthState} from "react-firebase-hooks/auth";
 import {auth} from "../utilities/firebase";
 import {useLocation, useParams} from "react-router-dom";
+// We needed this wrapper component to be able to get pathName and use it in a logic as below.
+// If we had called MessagePage component in App.js file then it wouldn't have been possible to fetch the pathname
+// since App.js component is not in <Routes> so it always returns undefined. That's why we created this wrapper component
+// for MessagePage component and put the logic including the pathname here.
 
 const MessagePageWrapper = () => {
     const [user] = useAuthState(auth);
