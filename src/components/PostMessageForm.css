@@ -1,0 +1,10 @@
+.reposition {
+    position: static;
+    left: 0;
+    right:0;
+    margin: auto;
+}
+
+form div {
+    display: flex;
+}

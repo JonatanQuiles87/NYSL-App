@@ -1,7 +1,8 @@
 // Import the functions you need from the SDKs you need
 import {initializeApp} from "firebase/app";
 import {getAuth, GoogleAuthProvider, signInWithPopup, signOut} from 'firebase/auth';
-import {getDatabase} from "firebase/database"
+import {getDatabase, ref, push, update} from "firebase/database";
+import {useList} from "react-firebase-hooks/database";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -20,7 +21,28 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 const googleProvider = new GoogleAuthProvider();
-export const database = getDatabase(firebaseApp);
+const database = getDatabase(firebaseApp);
+
+
+export const useData = (path) => {
+    const dbRef = ref(database, path);
+    const [snapshots, loading, error] = useList(dbRef);
+    return [snapshots, loading, error];
+};
+
+export const setData = async (path, user, messageText) => {
+    const updatedData = {};
+    const newMessageData = {
+            "author": user.displayName,
+            "email": user.email,
+            "text": messageText,
+            "timestamp": Date.now()
+    };
+    const uniqueKey = push(ref(database, path), newMessageData).key;
+    updatedData[uniqueKey] = newMessageData;
+
+    await update(ref(database, path), updatedData);
+}
 
 const signInWithGoogle = async () => {
     try {
@@ -34,5 +56,6 @@ const signInWithGoogle = async () => {
 const signOutFirebase = async () => {
     await signOut(auth);
 }
+
 
 export {auth, signInWithGoogle, signOutFirebase};

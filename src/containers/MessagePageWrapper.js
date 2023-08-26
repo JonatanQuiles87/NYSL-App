@@ -19,7 +19,7 @@ const MessagePageWrapper = () => {
         <>
             {
                 user && messagesPagePathName ?
-                <MessagePage gameId={gameId}/> :
+                <MessagePage gameId={gameId} user={user}/> :
                 <p>Please sign in to be able to see the chat!</p>
             }
         </>
