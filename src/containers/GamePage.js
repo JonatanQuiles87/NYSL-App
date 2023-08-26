@@ -1,6 +1,6 @@
 import React from 'react';
-import GameDetails from "./GameDetails";
-import LocationDetails from "./LocationDetails";
+import GameDetails from "../components/GameDetails";
+import LocationDetails from "../components/LocationDetails";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {tableData} from "../data/tableData";
 import {getHeaderTitles} from "../data/headerTitles";

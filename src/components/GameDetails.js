@@ -1,7 +1,7 @@
-import {Table} from "../components/Table";
-import {TableHeader} from "../components/TableHeader";
-import TableBody from "../components/TableBody";
-import TableRow from "../components/TableRow";
+import {Table} from "./Table";
+import {TableHeader} from "./TableHeader";
+import TableBody from "./TableBody";
+import TableRow from "./TableRow";
 
 const GameDetails = ({gameTableHeaderCells, gameTableRowCells, gameId}) => {
 

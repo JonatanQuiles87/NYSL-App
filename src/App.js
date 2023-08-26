@@ -8,6 +8,7 @@ import {OrderPageTemp} from "./components/OrderPageTemp";
 const LazySchedule = React.lazy(() => import('./containers/Schedule')); 
 //This is lazy load
 const LazyGames = React.lazy(() => import('./containers/GamePage'));
+const LazyMessages = React.lazy(() => import('./containers/MessagePageWrapper'));
 
 function App() {
   return (
@@ -29,6 +30,11 @@ function App() {
                           <React.Suspense fallback='Loading...'>
                             <LazyGames/>
                           </React.Suspense>}/>
+                          <Route path="gamePage/:id/messages" element={
+                        <React.Suspense fallback='Messages are loading...'>
+                            <LazyMessages/>
+                        </React.Suspense>
+                    }/>
 
                         <Route path="*" element={<NoMatch/>}/>
               </Route>

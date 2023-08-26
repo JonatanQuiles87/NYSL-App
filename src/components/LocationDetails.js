@@ -1,8 +1,8 @@
 import React from 'react';
-import {Table} from "../components/Table";
-import {TableHeader} from "../components/TableHeader";
-import TableRow from "../components/TableRow";
-import TableBody from "../components/TableBody";
+import {Table} from "./Table";
+import {TableHeader} from "./TableHeader";
+import TableRow from "./TableRow";
+import TableBody from "./TableBody";
 
 const LocationDetails = ({locationTableHeaderCells, locationTableRowCells}) => {
     return (
