@@ -1,50 +1,66 @@
-import React, {useState} from 'react';
+import React from 'react';
 import UploadPictureForm from "../components/UploadPictureForm";
 import BackToGameDetailsButton from "../components/BackToGameDetailsButton";
 import Picture from "../components/Picture";
-import {uploadImageToFirebase} from "../utilities/firebase";
-import {v4} from 'uuid';
+import {useData} from "../utilities/firebase";
+import {getTime, sortDataFromOldToNew} from "../utilities/helpers";
 
 const PicturesPage = ({gameId, user}) => {
-    const [imagePreview, setImagePreview] = useState(null); // To show the image after choosing but before uploading so just for previewing
-    const [imageUrl, setImageUrl] = useState(); // To be able to fetch the image from firebase database after uploaded and to show it in the page.
-    const [image, setImage] = useState(); // To be able to upload the image to firebase database
+    // const [imageUrlList, setImageUrlList] = useState([]); // To be able to fetch the existing images from firebase database at the beginning and also to show the images after uploaded immediately.
+    // This is also no needed anymore since we do not use imageListRef. We used to keep the list up to date all the time inside useEffect hook below but no needed now since we have urlListOfSpecificGame list now which also keeps updating thanks to useList hook.
 
+    // const imageListRef = ref_storage(storage, `gamePictures/${gameId}`);  // This is to be able to fetch the list of the pictures for a specific game to show in the page at the beginning.
+    // We could have also used this ref_store to fetch all the picture specific urls but to have the consistence we will fetch the urls from database under gamePictures
 
-    const onImageChange = event => {
-        const reader = new FileReader();
-        const file = event.target.files[0];
-        if (file) {
-            reader.readAsDataURL(file);
-            reader.onload = () => {
-                if (reader.readyState === 2) {
-                    console.log(file);
-                    setImagePreview(reader.result); // This line is to be able to see the image which is about to be uploaded before it is really uploaded. We are removing this preview after uploading by setting it to null in uploadImage function.
-                    setImage(file);
+    const [snapshots, loading, error] = useData(`/gamePictures/${gameId}`);
+    const InfoOfGameSpecificPictures = snapshots.map(v => {
+        const eachPictureObject = {};
+        eachPictureObject[v.key] = v.val();
+        return eachPictureObject;
+    });
+    const numberOfPictures = InfoOfGameSpecificPictures.length || 0;
+    const timeSortedInfoOfPictures = numberOfPictures > 1 ? sortDataFromOldToNew(InfoOfGameSpecificPictures)
+        : numberOfPictures === 1 ? InfoOfGameSpecificPictures
+            : null;
+
+    const imageGallery = loading ? <p>Images: Loading...</p>
+        : error ? <p>Error: {error}</p>
+            : timeSortedInfoOfPictures ? timeSortedInfoOfPictures.map(imageDataObject => {
+                    const imageInfo = Object.values(imageDataObject)[0];
+                    const url = imageInfo['url'];
+                    return <div key={url} className="col-md-4">
+                        <div className="thumbnail">
+                            <a href={url} target="_blank" rel="noopener noreferrer">
+                                <img src={url} alt="uploadedImage" style={{width: '100%', marginTop: '10%'}}/>
+                            </a>
+                            <div className="caption">
+                                <p style={{margin: 0}}>{`${imageInfo['author']}(${imageInfo['email']})`}</p>
+                                <small>{getTime(imageInfo['timestamp'])}</small>
+                            </div>
+                        </div>
+                    </div>
                 }
-            };
-        } else {
-            setImage(null);
-        }
-    };
+            ) : null;
 
-   const uploadImage = () => {
-        if (image) {
-            uploadImageToFirebase(`gamePictures/${gameId}/${image.name + v4()}`, image, setImageUrl);
-            setImagePreview(null); // To remove the preImage after uploading
-        } else {
-            alert("Please choose an image first.");
-        }
-    };
+
+    // useEffect(() => {        // As also explained above next to imageListRef. We don't use ref_storage to fetch the urls. If we had used it, useList would have been used to be able to get all the url under a path as a list. For future studies this is kept here. And also to be able to sort the pictures according to the upload dates.
+    //     listAll(imageListRef).then((response) => {       // useList hook inside useData method has its own useEffect hook so we don't need to use useEffect, we will always fetch the urls from database thanks to useList hook.
+    //         response.items.forEach((item) => {
+    //             getDownloadURL(item).then((url) => {
+    //                 setImageUrlList((prev) => [...prev, url]);
+    //             });
+    //         });
+    //     });
+    // }, []);
+
+
     return (
         <>
             <h2>Pictures of game {gameId}</h2>
 
-            <p>Pictures will be shown here.</p>
-            <Picture imageUrl={imageUrl}/>
+            <Picture>{imageGallery}</Picture>
 
-            <p>Uploading picture form will be here</p>
-            <UploadPictureForm user={user} imagePreview={imagePreview} onImageChange={onImageChange} uploadImage={uploadImage}/>
+            <UploadPictureForm user={user} gameId={gameId}/>
 
             <BackToGameDetailsButton gameId={gameId}/>
         </>

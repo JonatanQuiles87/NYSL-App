@@ -5,7 +5,7 @@
     margin: auto;
 }
 
-.selectAndUpload, form label, form small {
+.selectAndUpload, .form-group, form label, form small, .preview img {
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {getGameTime} from "../utilities/helpers";
+import {getTime} from "../utilities/helpers";
 
 const Message = ({message}) => {
     return (
@@ -9,7 +9,7 @@ const Message = ({message}) => {
                     <h5 className="mb-1">{message["author"]}</h5>
                     <small className="text-muted">({message["email"]})</small>
                 </div>
-                <small>{getGameTime(message["timestamp"])}</small>
+                <small>{getTime(message["timestamp"])}</small>
             </div>
             <p className="mb-1">{message["text"]}</p>
         </div>
