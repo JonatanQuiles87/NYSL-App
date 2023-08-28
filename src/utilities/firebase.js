@@ -42,8 +42,7 @@ const updatedData = {};
     };
     const uniqueKey = push(ref_database(database, path), newMessageData).key;
     updatedData[uniqueKey] = newMessageData;
-
-    await update(ref(database, path), updatedData);
+    await update(ref_database(database, path), updatedData);
 }
 const uploadImageToFirebase = (path, image, setImageUrl) => {
     const storageRef = ref_storage(storage, path);
