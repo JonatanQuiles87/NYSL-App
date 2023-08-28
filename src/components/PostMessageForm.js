@@ -1,13 +1,14 @@
 import React, {useRef} from 'react';
-import "./PostMessageForm.css"
-import {setData} from "../utilities/firebase";
+import "./Form.css"
+import {submitMessage} from "../utilities/firebase";
+import {onSubmitHandler} from "../utilities/helpers";
 
 const PostMessageForm = ({gameId, user}) => {
     const inputRef = useRef(null);
 
-    const fetchAndSubmitMessage = async () => {
+    const fetchFromInputAndSubmitMessage = async () => {
         const messageText = inputRef.current.value;
-        await setData(`/gameMessages/${gameId}`, user, messageText);
+        await submitMessage(`/gameMessages/${gameId}`, user, messageText);
         inputRef.current.value = '';
     }
 
@@ -20,9 +21,9 @@ const PostMessageForm = ({gameId, user}) => {
             <label htmlFor="message">You can leave your comment about this game</label>
             <div className="form-group">
                 <input ref={inputRef} type="text" className="form-control" id="message" placeholder="Enter your message here"/>
-                <button type="submit" className="btn btn-primary" onClick={fetchAndSubmitMessage}>Post</button>
+                <button type="submit" className="btn btn-primary" onClick={fetchFromInputAndSubmitMessage}>Post</button>
             </div>
-            <small id="emailHelp" className="form-text text-muted">Click on the Post button or press enter to submit your
+            <small id="postMessageHelp" className="form-text text-muted">Click on the Post button or press enter to submit your
                 message</small>
         </form>
     );
