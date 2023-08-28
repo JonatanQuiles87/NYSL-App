@@ -46,8 +46,8 @@ const updatedData = {};
 }
 const uploadImageToFirebase = (path, image, setImageUrl) => {
     const storageRef = ref_storage(storage, path);
-    uploadBytes(storageRef, image).then(() => {
-        getDownloadURL(storageRef).then(value => {
+    uploadBytes(storageRef, image).then((snapshot) => {
+        getDownloadURL(snapshot.ref).then(value => {
             setImageUrl(value);
         });
         alert("Image is uploaded to firebase");

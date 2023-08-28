@@ -3,9 +3,10 @@ import UploadPictureForm from "../components/UploadPictureForm";
 import BackToGameDetailsButton from "../components/BackToGameDetailsButton";
 import Picture from "../components/Picture";
 import {uploadImageToFirebase} from "../utilities/firebase";
+import {v4} from 'uuid';
 
 const PicturesPage = ({gameId, user}) => {
-    const [imagePreView, setImagePreview] = useState(null); // To show the image after choosing but before uploading so for previewing
+    const [imagePreview, setImagePreview] = useState(null); // To show the image after choosing but before uploading so just for previewing
     const [imageUrl, setImageUrl] = useState(); // To be able to fetch the image from firebase database after uploaded and to show it in the page.
     const [image, setImage] = useState(); // To be able to upload the image to firebase database
 
@@ -29,7 +30,7 @@ const PicturesPage = ({gameId, user}) => {
 
    const uploadImage = () => {
         if (image) {
-            uploadImageToFirebase(`gamePictures/${gameId}/${image.name}`, image, setImageUrl);
+            uploadImageToFirebase(`gamePictures/${gameId}/${image.name + v4()}`, image, setImageUrl);
             setImagePreview(null); // To remove the preImage after uploading
         } else {
             alert("Please choose an image first.");
@@ -43,7 +44,7 @@ const PicturesPage = ({gameId, user}) => {
             <Picture imageUrl={imageUrl}/>
 
             <p>Uploading picture form will be here</p>
-            <UploadPictureForm user={user} imagePreview={imagePreView} onImageChange={onImageChange} uploadImage={uploadImage}/>
+            <UploadPictureForm user={user} imagePreview={imagePreview} onImageChange={onImageChange} uploadImage={uploadImage}/>
 
             <BackToGameDetailsButton gameId={gameId}/>
         </>
