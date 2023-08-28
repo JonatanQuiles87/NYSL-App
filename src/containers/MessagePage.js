@@ -3,10 +3,9 @@ import {useData} from "../utilities/firebase";
 import Message from "../components/Message";
 import {sortMessagesFromOldToNew} from "../utilities/helpers";
 import PostMessageForm from "../components/PostMessageForm";
-import {useNavigate} from "react-router-dom";
+import BackToGameDetailsButton from "../components/BackToGameDetailsButton";
 
-const MessagePage = ({gameId, user}) => {
-    const navigate = useNavigate();
+const MessagesPage = ({gameId, user}) => {
     const [snapshots, loading, error] = useData(`/gameMessages/${gameId}`);
     const gameSpecificMessages = snapshots.map(v => {
             const eachMessageObject = {};
@@ -33,12 +32,9 @@ const MessagePage = ({gameId, user}) => {
 
             <PostMessageForm gameId={gameId} user={user}/>
 
-            <button type="button" className="btn btn-primary" onClick={() => navigate(`/gamePage/${gameId}`)}
-                    style={{display: "block"}}>Back to the
-                Game Details Page
-            </button>
+            <BackToGameDetailsButton gameId={gameId}/>
         </>
     );
 };
 
-export default MessagePage;
+export default MessagesPage;

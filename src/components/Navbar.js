@@ -9,10 +9,12 @@ const Navbar = () => {
     const [user] = useAuthState(auth);
     const gameId = useParams().id || null;
     const pathName = useLocation().pathname;
-    const messagesPagePathVariable = pathName.split('/')[3] || ''; // This line is to be able to see if the last part of the message page
+    const messagesOrPicsPagePathVariable = pathName.split('/')[3] || '';  // This line is to be able to see if the last part of the message page
     // which is 'messages' exists out of the whole messages page path which is '/gamePage/:id/messages'
     // If this part of the path exists then we do not show the link which directs the user to messages page in navbar since the user is already on the messages page.
-    const fullPathOfMessagesPage = gameId && !messagesPagePathVariable ? `${pathName}/messages` : null;  // This line is creating the whole path for message page which is '/gamePage/:id/messages'
+    const fullPathOfMessagesPage = gameId && !messagesOrPicsPagePathVariable ? `${pathName}/messages` : null;  // This line is creating the whole path for message page which is '/gamePage/:id/messages'
+    const fullPathOfPicturesPage = gameId && !messagesOrPicsPagePathVariable ? `${pathName}/pictures` : null;
+
     const navLinkStyles = ({isActive}) => {
         return {
             fontWeight: isActive ? 'bold' : 'normal',
@@ -31,10 +33,15 @@ const Navbar = () => {
                     <NavLink style={navLinkStyles} to="/schedule" className="nav-link shadow">Schedule</NavLink>
                 </li>
 
-                {user && gameId && !messagesPagePathVariable ?
-                    <li>
-                        <NavLink style={navLinkStyles} to={fullPathOfMessagesPage} className="nav-link shadow">Messages for Game {gameId}</NavLink>
-                    </li>
+                {user && gameId && !messagesOrPicsPagePathVariable ?
+                    <>
+                        <li>
+                            <NavLink style={navLinkStyles} to={fullPathOfMessagesPage} className="nav-link shadow">Messages for Game {gameId}</NavLink>
+                        </li>
+                        <li>
+                            <NavLink style={navLinkStyles} to={fullPathOfPicturesPage} className="nav-link shadow">Pictures for Game {gameId}</NavLink>
+                        </li>
+                    </>
                     : null
                 }
             </ul>

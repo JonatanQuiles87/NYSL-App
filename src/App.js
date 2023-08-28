@@ -9,6 +9,7 @@ const LazySchedule = React.lazy(() => import('./containers/Schedule'));
 //This is lazy load
 const LazyGames = React.lazy(() => import('./containers/GamePage'));
 const LazyMessages = React.lazy(() => import('./containers/MessagePageWrapper'));
+const LazyPictures = React.lazy(() => import('./containers/PicturePageWrapper'));
 
 function App() {
   return (
@@ -33,6 +34,11 @@ function App() {
                           <Route path="gamePage/:id/messages" element={
                         <React.Suspense fallback='Loading...'>
                             <LazyMessages/>
+                        </React.Suspense>
+                    }/>
+                       <Route path="gamePage/:id/pictures" element={
+                        <React.Suspense fallback='Loading...'>
+                            <LazyPictures/>
                         </React.Suspense>
                     }/>
 

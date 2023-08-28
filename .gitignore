@@ -8,6 +8,7 @@
 .firebaserc
 /firebase.json
 /database.rules.json
+/storage.rules
 
 # testing
 /coverage

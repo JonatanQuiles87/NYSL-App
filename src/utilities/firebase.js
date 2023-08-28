@@ -3,6 +3,7 @@ import {initializeApp} from "firebase/app";
 import {getAuth, GoogleAuthProvider, signInWithPopup, signOut} from 'firebase/auth';
 import {getDatabase, ref, push, update} from "firebase/database";
 import {useList} from "react-firebase-hooks/database";
+import {getStorage} from "firebase/storage"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -22,16 +23,17 @@ const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 const googleProvider = new GoogleAuthProvider();
 const database = getDatabase(firebaseApp);
+const storage = getStorage(firebaseApp);
 
 
-export const useData = (path) => {
+const useData = (path) => {
     const dbRef = ref(database, path);
     const [snapshots, loading, error] = useList(dbRef);
     return [snapshots, loading, error];
 };
 
-export const setData = async (path, user, messageText) => {
-    const updatedData = {};
+const setData = async (path, user, messageText) => {
+const updatedData = {};
     const newMessageData = {
             "author": user.displayName,
             "email": user.email,
@@ -58,4 +60,4 @@ const signOutFirebase = async () => {
 }
 
 
-export {auth, signInWithGoogle, signOutFirebase};
+export {auth, signInWithGoogle, signOutFirebase, useData, setData};

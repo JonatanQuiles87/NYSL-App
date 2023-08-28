@@ -49,8 +49,8 @@ const GamePage = () => {
                              locationTableRowCells={locationTableRowCells}/>
 
             {!user ?
-                <h3 className="alert-warning">NOTE: Please sign in to be able to see the messages or post new messages
-                    for this game. You can click on the messages link in the navbar after signing in.</h3>
+                <h4 className="alert-warning">NOTE: Please sign in to be able to see the messages and pictures and also post new messages and upload new pictures
+                for this game. You can click on the messages link or pictures link in the navbar after signing in.</h4>
                 : null}
 
             <button type="button" className="btn btn-primary" onClick={() => navigate('/schedule')}
